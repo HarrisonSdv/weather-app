@@ -10,7 +10,7 @@ class IndexComponent extends React.Component {
     render(){
         return(
             <div> 
-                <BrowserRouter>
+                <BrowserRouter basename="/weather-app">
                     <Switch>    
                         <Route exact path="/" component={Home} />
                         <Route exact path="/search/:id" render={props=> <Closer {...props} /> } />
