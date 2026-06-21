@@ -45,7 +45,7 @@ class Home extends React.Component {
     }
 
     Search1(lat, lon){
-        fetch("http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=metric&appid=f92532d2ff19c48882865e592e1b6779")
+        fetch("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=metric&appid=f92532d2ff19c48882865e592e1b6779")
         .then(response => response.json())
         .then(
             (result) =>{
@@ -87,7 +87,7 @@ class Home extends React.Component {
         test.preventDefault();
         if(test.target.elements.citysearch.value !== ""){
             var search = test.target.elements.citysearch.value;
-        fetch("http://api.openweathermap.org/data/2.5/find?q=" + search + "&units=metric&cnt=50&appid=f92532d2ff19c48882865e592e1b6779")
+        fetch("https://api.openweathermap.org/data/2.5/find?q=" + search + "&units=metric&cnt=50&appid=f92532d2ff19c48882865e592e1b6779")
         .then(response => response.json())
         .then(result =>{
 
@@ -104,7 +104,7 @@ class Home extends React.Component {
                 for(var i = 0; i < result.count; i++){
                     var city = result.list[i].name;
                     var country = result.list[i].sys.country;
-                    this.flag.push("http://openweathermap.org/images/flags/" + country.toLowerCase() + ".png")
+                    this.flag.push("https://openweathermap.org/images/flags/" + country.toLowerCase() + ".png")
                     this.id.push(result.list[i].id)
                     this.searchlocation.push(city + " " + country);
 
@@ -114,7 +114,7 @@ class Home extends React.Component {
                     this.description.push("Feels like: " + feel + ", " + desc + ", wind speed: " + wind + "m/s")
 
                     var icon = result.list[i].weather[0].icon;
-                    this.wSymbol.push("http://openweathermap.org/img/wn/"+ icon +"@2x.png")
+                    this.wSymbol.push("https://openweathermap.org/img/wn/"+ icon +"@2x.png")
                     var temp = result.list[i].main.temp;
                     this.main.push(temp + " ° c");
                     //result.list[i]
