@@ -1,0 +1,12 @@
+span#link{
+    color: aqua;
+    text-decoration: underline;
+}
+
+div#error{
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 100%;
+    text-align: center;
+    background-color: blueviolet;
+}

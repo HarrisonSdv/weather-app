@@ -1,0 +1,21 @@
+div #body2 {
+    color: white;
+    background-color:slateblue;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 100%;
+    display: none;
+}
+
+div .data{
+    block-size: 350px;
+    background-color: rgb(175, 7, 197);
+    border: 10px solid rgb(5, 148, 243);
+}
+
+#arrow{
+    width: 100px;
+    height: 70px;
+}
+
+

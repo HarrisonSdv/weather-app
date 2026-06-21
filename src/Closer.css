@@ -1,0 +1,18 @@
+div #body {
+    color: white;
+    background-color:slateblue;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 100%;
+    display: none;
+}
+
+div#a{
+    text-align: left;
+    color: white;
+}
+
+div#b{
+    text-align: left;
+    color: white;
+}
