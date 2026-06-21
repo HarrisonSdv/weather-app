@@ -55,7 +55,7 @@ class Closer extends React.Component {
         test.preventDefault();
         if(test.target.elements.citysearch.value !== ""){
             var search = test.target.elements.citysearch.value;
-        fetch("http://api.openweathermap.org/data/2.5/find?q=" + search + "&units=metric&cnt=50&appid=f92532d2ff19c48882865e592e1b6779")
+        fetch("https://api.openweathermap.org/data/2.5/find?q=" + search + "&units=metric&cnt=50&appid=f92532d2ff19c48882865e592e1b6779")
         .then(response => response.json())
         .then(result =>{
 
@@ -72,7 +72,7 @@ class Closer extends React.Component {
                 for(var i = 0; i < result.count; i++){
                     var city = result.list[i].name;
                     var country = result.list[i].sys.country;
-                    this.flag.push("http://openweathermap.org/images/flags/" + country.toLowerCase() + ".png")
+                    this.flag.push("https://openweathermap.org/images/flags/" + country.toLowerCase() + ".png")
                     this.id.push(result.list[i].id)
                     this.searchlocation.push(city + " " + country);
 
@@ -82,7 +82,7 @@ class Closer extends React.Component {
                     this.description.push("Feels like: " + feel + ", " + desc + ", wind speed: " + wind + "m/s")
 
                     var icon = result.list[i].weather[0].icon;
-                    this.wSymbol.push("http://openweathermap.org/img/wn/"+ icon +"@2x.png")
+                    this.wSymbol.push("https://openweathermap.org/img/wn/"+ icon +"@2x.png")
                     var temp = result.list[i].main.temp;
                     this.main.push(temp + " ° c");
                 }
@@ -147,7 +147,7 @@ class Closer extends React.Component {
     }
 
     closeSearch(){
-        fetch("http://api.openweathermap.org/data/2.5/weather?id=" + this.searchID + "&units=metric&cnt=50&appid=f92532d2ff19c48882865e592e1b6779")
+        fetch("https://api.openweathermap.org/data/2.5/weather?id=" + this.searchID + "&units=metric&cnt=50&appid=f92532d2ff19c48882865e592e1b6779")
         .then(response => response.json())
         .then(result =>{
             console.log(result);
@@ -162,7 +162,7 @@ class Closer extends React.Component {
 
             var city = result.name;
             var country = result.sys.country;
-            this.flag.push("http://openweathermap.org/images/flags/" + country.toLowerCase() + ".png")
+            this.flag.push("https://openweathermap.org/images/flags/" + country.toLowerCase() + ".png")
             this.id.push(result.id)
             this.searchlocation.push(city + " " + country);
 
@@ -172,7 +172,7 @@ class Closer extends React.Component {
             this.description.push("Feels like: " + feel + ", " + desc + ", wind speed: " + wind + "m/s")
 
             var icon = result.weather[0].icon;
-            this.wSymbol.push("http://openweathermap.org/img/wn/"+ icon +"@2x.png")
+            this.wSymbol.push("https://openweathermap.org/img/wn/"+ icon +"@2x.png")
             var temp = result.main.temp;
             this.main.push(temp + " ° c");
 
@@ -198,6 +198,14 @@ class Closer extends React.Component {
 
     componentDidMount(){
         this.closeSearch();
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.match.params.id !== this.props.match.params.id){
+            this.searchID = this.props.match.params.id;
+            this.setState({data: false});
+            this.closeSearch();
+        }
     }
 
     detail(num){
